@@ -1,1 +1,14 @@
-
+#include <stdio.h>
+#include <conio.h>
+int i, j, m, n, a[100][100];
+int main(){
+	printf("Nhap so dong: ");
+	scanf("%d",&m);
+    printf("Nhap so cot: ");
+	scanf("%d",&n);
+	
+	for(i=0;i<m;i++)
+	   for(j=1;j<m;j++){
+	   	
+	   	}
+	}
