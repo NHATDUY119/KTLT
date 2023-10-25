@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+int i,j,n,a[100],dem, tong=0;
+int main(){
+
+printf("nhap so phan tu cua manng : ");
+	scanf("%d",&n);
+
+	for(i=0; i<n ;i++){
+	printf("nhap phan tu thu a[%d]: ",i);
+	scanf("%d",&a[i]);	
+	}
+	printf("cac so nguyen to trong mang la:");
+	for(i=0;i<n;i++)
+	{   dem=0;
+		for(j=1;j<=a[i];j++)
+		{
+			if(a[i] % j == 0)
+			{
+			dem++;	
+			}	
+		}
+		if(dem==2)
+		{
+			printf("%d  ",a[i]);
+		tong=tong+a[i];	
+		}
+	}
+	printf("\n tong snt la:%d",tong);
+	
+}
