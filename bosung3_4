@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+void tinhtoanab(){
+	int a,b;
+	printf("nhap vao gia tri a:");
+	scanf("%d",&a);
+	printf("nhap vao gia tri b:");
+	scanf("%d",&b);
+	int tong=a+b;
+	int tich=a*b;
+	int thuong=a/b;
+	int hieu=a-b;
+	printf("\ntong=%d",tong);
+	printf("\ntich=%d",tich);
+	printf("\nthuong=%d",thuong);
+	printf("\nhieu=%d\n",hieu);
+}
+
+void maxmincd(){
+	int a,b;
+		printf("\n nhap vao gia tri a:");
+	scanf("%d",&a);
+	printf("nhap vao gia tri b:");
+	scanf("%d",&b);
+	if(a==b)
+	{
+		printf("c va d  bang nhau."); 
+	}
+	else
+	{
+	if(a>b)	
+	{
+		printf("\ngia tri lon  nhat la c=%d",a);
+		printf("\ngia tri nho  nhat la d=%d",b);
+	}
+	else
+	{
+	printf("\ngia tri nho  nhat la c=%d",a);
+	printf("\ngia tri lon  nhat la d=%d",b);	
+	}	
+	}	
+}
+
+void ptbatnhat(){
+	int a,b;
+	printf("\n nhap vao gia tri a:");
+	scanf("%d",&a);
+	printf("\n nhap vao gia tri b:");
+	scanf("%d",&b);
+	printf("\npt bat nhat vua nhap la:%dx + %d = 0",a,b);
+//tao di?u ki?n cho chuong trình
+  //TH1: n?u a = 0 và b = 0 thì phuong trình vô s? nghi?m
+  //TH2: n?u a = 0 và b != 0 thì phuong trình vô nghi?m
+  //TH3: N?u a != thì x = -b / a
+    if(a==0)
+    {
+    	if(b==0)
+    	{
+    		printf("\n phuong trinh vo so nghiem.");
+    	}
+    	else
+    	{
+    		printf("\n phuong trinh vo nghiem.");
+    	}	
+    }
+    else
+    {
+    float nghiem;
+    nghiem=((float)-b/a);
+	printf("\n nghiem cua pt la x= %f",nghiem);	
+    }
+}
+
+void diemtrungbinh(){
+	int t,l,h;
+	printf("nhap diem toan:");
+	scanf("%d",&t);
+	printf("nhap diem ly:");
+	scanf("%d",&l);
+	printf("nhap diem hoa:");
+	scanf("%d",&h);
+	
+	float tb = ((float)(t+l+h)/3);
+	printf("diem trung binh la:%d",tb);	
+}
+
+
+int main(){
+ tinhtoanab();
+ maxmincd();	
+ ptbatnhat();	
+}
