@@ -1,0 +1,176 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    // 1. Tính t?ng, hi?u, tích, thuong c?a 2 s? nguyên
+    int num1, num2;
+    printf("Nhap vao 2 so nguyen: ");
+    scanf("%d %d", &num1, &num2);
+    int sum = num1 + num2;
+    int difference = num1 - num2;
+    int product = num1 * num2;
+    float quotient = (float)num1 / num2;
+
+    printf("1. Tong: %d\n", sum);
+    printf("   Hieu: %d\n", difference);
+    printf("   Tich: %d\n", product);
+    printf("   Thuong: %.2f\n", quotient);
+
+    // 2. Tính t?ng và tích các ch? s? c?a s? có 3 ch? s?
+    int threeDigitNumber;
+    printf("Nhap vao so nguyen co 3 chu so: ");
+    scanf("%d", &threeDigitNumber);
+    int digit1 = threeDigitNumber / 100;
+    int digit2 = (threeDigitNumber / 10) % 10;
+    int digit3 = threeDigitNumber % 10;
+    int sumDigits = digit1 + digit2 + digit3;
+    int productDigits = digit1 * digit2 * digit3;
+
+    printf("2. Tong cac chu so: %d\n", sumDigits);
+    printf("   Tich cac chu so: %d\n", productDigits);
+
+    // 3. In s? l?n nh?t và s? nh? nh?t t? 2 s? nguyên
+    int a, b;
+    printf("Nhap vao hai so nguyen a, b: ");
+    scanf("%d %d", &a, &b);
+    int max = (a > b) ? a : b;
+    int min = (a < b) ? a : b;
+
+    printf("3. So lon nhat: %d\n", max);
+    printf("   So nho nhat: %d\n", min);
+
+    // 4. Tính di?m trung bình và x?p lo?i h?c sinh
+    float toan, ly, hoa;
+    printf("Nhap diem toan, ly, hoa cua hoc sinh: ");
+    scanf("%f %f %f", &toan, &ly, &hoa);
+    float diemTrungBinh = (toan + ly + hoa) / 3;
+
+    printf("4. Diem trung binh: %.2f\n", diemTrungBinh);
+    printf("   Xep loai: ");
+    if (diemTrungBinh >= 9) {
+        printf("Xuat sac\n");
+    } else if (diemTrungBinh >= 8) {
+        printf("Gioi\n");
+    } else if (diemTrungBinh >= 6.5) {
+        printf("Kha\n");
+    } else if (diemTrungBinh >= 5) {
+        printf("Trung binh\n");
+    } else if (diemTrungBinh >= 3.5) {
+        printf("Yeu\n");
+    } else {
+        printf("Kem\n");
+    }
+
+   // 5. Gi?i và bi?n lu?n phuong trình b?c nh?t ax + b = 0
+float a5, b5;
+printf("Nhap vao a va b cua phuong trinh ax + b = 0: ");
+scanf("%f %f", &a5, &b5);
+if (a5 == 0) {
+    if (b5 == 0) {
+        printf("Phuong trinh vo so nghiem.\n");
+    } else {
+        printf("Phuong trinh vo nghiem.\n");
+    }
+} else {
+    float x5 = -b5 / a5;
+    printf("Nghiem cua phuong trinh la: %.2f\n", x5);
+}
+
+// 6. In ra ngày tuong ?ng v?i s? t? 1 d?n 7
+int day;
+printf("Nhap vao so nguyen n (1<=n<=7): ");
+scanf("%d", &day);
+switch (day) {
+    case 1:
+        printf("6. Sunday\n");
+        break;
+    case 2:
+        printf("   Monday\n");
+        break;
+    case 3:
+        printf("   Tuesday\n");
+        break;
+    case 4:
+        printf("   Wednesday\n");
+        break;
+    case 5:
+        printf("   Thursday\n");
+        break;
+    case 6:
+        printf("   Friday\n");
+        break;
+    case 7:
+        printf("   Saturday\n");
+        break;
+    default:
+        printf("Nhap sai! Nhap lai so nguyen tu 1 den 7.\n");
+}
+
+// 7. Ki?m tra và tính di?n tích, chi?u dài m?i du?ng cao c?a tam giác
+float a7, b7, c7;
+printf("Nhap vao 3 so thuc a, b, c: ");
+scanf("%f %f %f", &a7, &b7, &c7);
+if (a7 + b7 > c7 && a7 + c7 > b7 && b7 + c7 > a7) {
+    float p7 = (a7 + b7 + c7) / 2;
+    float dienTich = sqrt(p7 * (p7 - a7) * (p7 - b7) * (p7 - c7));
+    float hA = 2 * dienTich / a7;
+    float hB = 2 * dienTich / b7;
+    float hC = 2 * dienTich / c7;
+
+    printf("7. Day la tam giac.\n");
+    printf("   Dien tich: %.2f\n", dienTich);
+    printf("   Chieu dai duong cao a: %.2f\n", hA);
+    printf("   Chieu dai duong cao b: %.2f\n", hB);
+    printf("   Chieu dai duong cao c: %.2f\n", hC);
+} else {
+    printf("7. Khong phai la tam giac.\n");
+}
+
+// 8. Gi?i và bi?n lu?n phuong trình b?c hai ax^2 + bx + c = 0
+float a8, b8, c8;
+printf("Nhap vao a, b, c cua phuong trinh ax^2 + bx + c = 0: ");
+scanf("%f %f %f", &a8, &b8, &c8);
+float delta = b8 * b8 - 4 * a8 * c8;
+if (delta > 0) {
+    float x1 = (-b8 + sqrt(delta)) / (2 * a8);
+    float x2 = (-b8 - sqrt(delta)) / (2 * a8);
+    printf("8. Phuong trinh co 2 nghiem phan biet: %.2f va %.2f\n", x1, x2);
+} else if (delta == 0) {
+    float x = -b8 / (2 * a8);
+    printf("   Phuong trinh co nghiem kep: %.2f\n", x);
+} else {
+    printf("   Phuong trinh vo nghiem.\n");
+}
+
+// 9. Chuy?n ch? cái t? hoa sang thu?ng ho?c ngu?c l?i
+char ch;
+printf("Nhap vao mot chu cai: ");
+scanf(" %c", &ch);
+if (ch >= 'a' && ch <= 'z') {
+    printf("9. Chu cai chuyen sang chu hoa: %c\n", ch - ('a' - 'A'));
+} else if (ch >= 'A' && ch <= 'Z') {
+    printf("   Chu cai chuyen sang chu thuong: %c\n", ch + ('a' - 'A'));
+} else {
+    printf("   Khong phai chu cai.\n");
+}
+
+// 10. Tính ti?n di?n
+int soKwh;
+printf("Nhap vao so Kwh tieu thu: ");
+scanf("%d", &soKwh);
+float tienDien;
+if (soKwh <= 100) {
+    tienDien = soKwh * 455;
+} else if (soKwh <= 150) {
+    tienDien = 100 * 455 + (soKwh - 100) * 591;
+} else if (soKwh <= 200) {
+    tienDien = 100 * 455 + 50 * 591 + (soKwh - 150) * 818;
+} else {
+    tienDien = 100 * 455 + 50 * 591 + 50 * 818 + (soKwh - 200) * 1000;
+}
+printf("10. Tien dien phai tra: %.2f VND\n", tienDien);
+
+
+
+    return 0;
+}
