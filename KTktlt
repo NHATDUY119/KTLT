@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<string.h>
+#include<ctype.h>
+ 
+
+
+int main()
+{
+	int key;
+	
+	while(1)
+	{
+		system("cls");
+		printf("*******************************************\n");
+		printf("**             TIEN DIEN                 **\n");
+		printf("**      1. thong tin su dung dien        **\n");
+		printf("**      2. In hoa don ho theo thang      **\n");
+		printf("**      3. In DS nop tien theo thang     **\n");
+		printf("**      0. Thoat                         **\n");
+		printf("*******************************************\n");
+		
+		printf("\n \t\t AN PHIM CHON: ");
+			scanf("%d",&key);
+		
+		switch(key)
+		{
+			case 1:
+				fflush(stdin);
+				//goi ham 
+				printf("\n bam phim bat ky de tiep tuc!");
+				getch();
+				break;
+			case 2:
+				fflush(stdin);
+				//goi ham
+				printf("\n bam phim bat ky de tiep tuc!");
+				getch();
+				break;
+			case 3:
+				fflush(stdin);
+				//goi ham
+				printf("\n bam phim bat ky de tiep tuc!");
+				getch();
+				break;
+			case 0:
+				exit(1);
+			default:
+				printf("khong co chuc nang nay!");
+				printf("\n bam phim bat ky de tiep tuc!");
+				getch();
+				break;	      
+		}
+	}	
+}
