@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void chuanHoaChuoi(char *str) {
+    int i, j;
+    int length = strlen(str);
+
+    // Xóa khoảng trắng thừa
+    for (i = 0; i < length; i++) {
+        if (isspace(str[i]) && isspace(str[i + 1])) {
+            for (j = i; j < length; j++) {
+                str[j] = str[j + 1];
+            }
+            length--;
+            i--;
+        }
+    }
+
+    // In hoa ký tự đầu mỗi từ
+    if (isalpha(str[0])) {
+        str[0] = toupper(str[0]);
+    }
+
+    for (i = 1; i < length; i++) {
+        if (isalpha(str[i]) && isspace(str[i - 1])) {
+            str[i] = toupper(str[i]);
+        } else {
+            str[i] = tolower(str[i]);
+        }
+    }
+}
+
+int demKyTuGiong(char *str, char ch) {
+    int count = 0;
+    char lowercaseCh = tolower(ch);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (tolower(str[i]) == lowercaseCh) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    char S[100];
+    char ch;
+
+    int choice;
+    do {
+        printf("\nMenu:\n");
+        printf("1. Nhap chuoi va chuan hoa\n");
+        printf("2. Nhap ky tu va dem so lan xuat hien trong chuoi\n");
+        printf("0. Thoat\n");
+        printf("Chon chuc nang: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Nhap chuoi S: ");
+                getchar(); // Đọc kí tự '\n' còn trong buffer
+                fgets(S, sizeof(S), stdin);
+                S[strcspn(S, "\n")] = '\0'; // Loại bỏ kí tự '\n' thừa từ fgets
+                chuanHoaChuoi(S);
+                printf("Chuoi sau khi chuan hoa la: %s\n", S);
+                break;
+            case 2:
+                printf("Nhap ky tu: ");
+                getchar(); // Đọc kí tự '\n' còn trong buffer
+                scanf("%c", &ch);
+                printf("So lan ky tu '%c' xuat hien trong chuoi la: %d\n", ch, demKyTuGiong(S, ch));
+                break;
+            case 0:
+                printf("Ket thuc chuong trinh.\n");
+                break;
+            default:
+                printf("Lua chon khong hop le. Vui long chon lai.\n");
+        }
+    } while (choice != 0);
+
+    return 0;
+}
