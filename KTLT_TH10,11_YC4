@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char masv[20];
+    char hotensv[50];
+    char phai[5];
+    float diemtoan;
+    float diemvan;
+    float diemAV;
+    float kqht;
+    char xeploai[20];
+} SinhVien;
+
+void nhapDanhSach(int n, SinhVien sv[]) {
+    for (int i = 0; i < n; i++) {
+        printf("\nNhap thong tin cho Sinh vien %d:\n", i + 1);
+        printf("Ma SV: ");
+        scanf("%s", sv[i].masv);
+        printf("Ho ten SV: ");
+        scanf("%s", sv[i].hotensv);
+        printf("Phai: ");
+        scanf("%s", sv[i].phai);
+        printf("Diem Toan: ");
+        scanf("%f", &sv[i].diemtoan);
+        printf("Diem Van: ");
+        scanf("%f", &sv[i].diemvan);
+        printf("Diem AV: ");
+        scanf("%f", &sv[i].diemAV);
+
+        // Tính KQHT và Xep loai
+        sv[i].kqht = (sv[i].diemtoan * 2 + sv[i].diemvan * 2 + sv[i].diemAV) / 5;
+
+        if (sv[i].kqht < 1.5) {
+            strcpy(sv[i].xeploai, "Yeu");
+        } else if (sv[i].kqht < 2.5) {
+            strcpy(sv[i].xeploai, "Trung binh");
+        } else if (sv[i].kqht < 3.5) {
+            strcpy(sv[i].xeploai, "Kha");
+        } else if (sv[i].kqht < 3.7) {
+            strcpy(sv[i].xeploai, "Gioi");
+        } else {
+            strcpy(sv[i].xeploai, "Xuat sac");
+        }
+    }
+}
+
+void inDanhSach(int n, SinhVien sv[]) {
+    printf("\nDanh sach Sinh vien:\n");
+    printf("%-10s%-20s%-5s%-10s%-10s%-10s%-10s%-15s\n", "Ma SV", "Ho ten SV", "Phai", "Toan", "Van", "AV", "KQHT", "Xep loai");
+    for (int i = 0; i < n; i++) {
+        printf("%-10s%-20s%-5s%-10.2f%-10.2f%-10.2f%-10.2f%-15s\n", sv[i].masv, sv[i].hotensv, sv[i].phai, sv[i].diemtoan, sv[i].diemvan, sv[i].diemAV, sv[i].kqht, sv[i].xeploai);
+    }
+}
+
+void sapXepTheoKQHT(int n, SinhVien sv[]) {
+    // S?p x?p m?ng theo th? t? tăng d?n c?a KQHT
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (sv[i].kqht > sv[j].kqht) {
+                // Hoan vi
+                SinhVien temp = sv[i];
+                sv[i] = sv[j];
+                sv[j] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Nhap so luong Sinh vien: ");
+    scanf("%d", &n);
+
+    SinhVien *danhSachSV = (SinhVien *)malloc(n * sizeof(SinhVien));
+
+    int choice;
+    do {
+        printf("\nMenu:\n");
+        printf("1. Nhap danh sach Sinh vien\n");
+        printf("2. In danh sach Sinh vien tang dan theo KQHT\n");
+        printf("0. Thoat\n");
+        printf("Chon chuc nang: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                nhapDanhSach(n, danhSachSV);
+                break;
+            case 2:
+                sapXepTheoKQHT(n, danhSachSV);
+                inDanhSach(n, danhSachSV);
+                break;
+            case 0:
+                printf("Ket thuc chuong trinh.\n");
+                break;
+            default:
+                printf("Lua chon khong hop le. Vui long chon lai.\n");
+        }
+    } while (choice != 0);
+
+    free(danhSachSV);
+
+    return 0;
+}
+
