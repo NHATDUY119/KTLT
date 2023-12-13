@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Hàm ki?m tra s? nguyên t?
+int isPrime(int num) {
+    if (num < 2) {
+        return 0; // Không ph?i s? nguyên t?
+    }
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0) {
+            return 0; // Không ph?i s? nguyên t?
+        }
+    }
+    return 1; // Là s? nguyên t?
+}
+
+// Hàm nh?p m?ng 2 chi?u
+void nhapMang(int** arr, int m, int n) {
+    printf("Nhap mang 2 chieu %dx%d:\n", m, n);
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            printf("arr[%d][%d]: ", i, j);
+            scanf("%d", &arr[i][j]);
+        }
+    }
+}
+
+// Hàm xu?t m?ng 2 chi?u
+void xuatMang(int** arr, int m, int n) {
+    printf("\nMang 2 chieu %dx%d:\n", m, n);
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            printf("%d\t", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Hàm s?p x?p m?ng theo th? t? tang d?n
+void sapXepTangDan(int** arr, int m, int n) {
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n - 1; ++j) {
+            for (int k = 0; k < n - j - 1; ++k) {
+                if (arr[i][k] > arr[i][k + 1]) {
+                    int temp = arr[i][k];
+                    arr[i][k] = arr[i][k + 1];
+                    arr[i][k + 1] = temp;
+                }
+            }
+        }
+    }
+    printf("\nDa sap xep mang theo thu tu tang dan.\n");
+}
+
+// Hàm tính t?ng các ph?n t? là s? nguyên t?
+int tongSoNguyenTo(int** arr, int m, int n) {
+    int sum = 0;
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (isPrime(arr[i][j])) {
+                sum += arr[i][j];
+            }
+        }
+    }
+    return sum;
+}
+
+int main() {
+    int choice;
+    int m, n;
+
+    printf("Nhap so hang m: ");
+    scanf("%d", &m);
+    printf("Nhap so cot n: ");
+    scanf("%d", &n);
+
+    // C?p phát b? nh? d?ng cho m?ng 2 chi?u
+    int** arr = (int**)malloc(m * sizeof(int*));
+    for (int i = 0; i < m; ++i) {
+        arr[i] = (int*)malloc(n * sizeof(int));
+    }
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Nhap/xuat mang 2 chieu\n");
+        printf("2. Sap xep mang theo thu tu tang dan\n");
+        printf("3. Tinh tong cac phan tu la so nguyen to\n");
+        printf("0. Thoat\n");
+        printf("Chon: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                nhapMang(arr, m, n);
+                xuatMang(arr, m, n);
+                break;
+            case 2:
+                sapXepTangDan(arr, m, n);
+                xuatMang(arr, m, n);
+                break;
+            case 3:
+                printf("\nTong cac phan tu la so nguyen to: %d\n", tongSoNguyenTo(arr, m, n));
+                break;
+            case 0:
+                printf("Tam biet!\n");
+                break;
+            default:
+                printf("Lua chon khong hop le. Vui long chon lai.\n");
+        }
+    } while (choice != 0);
+
+    // Gi?i phóng b? nh?
+    for (int i = 0; i < m; ++i) {
+        free(arr[i]);
+    }
+    free(arr);
+
+    return 0;
+}
