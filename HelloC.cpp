@@ -63,3 +63,32 @@ fread(&sv,sizeof(sv),1,f);
 fclose(f);
 printf("Bam phim bat ky de tiep tuc!!!");
 getch();
+
+
+void Search(char *FileName)
+{
+char MSSV[10];
+FILE *f;
+int Found=0;
+SinhVien sv;
+fflush(stdin);
+printf("Ma so sinh vien can tim: ");
+gets (MSSV);
+f=fopen(FileName,"rb");
+while (!feof(f) && Found==0)
+}
+fread(&sv, sizeof(sv),1,f);
+if (strcmp(sv. Ma, MSSV)==0)
+Found=1;
+fclose(f);
+if (Found == 1)
+(
+printf("Tim thay SV co ma %s. Ho ten la: %s", sv. Ma, sv.HoTen);
+}
+else
+{
+H
+}
+printf("Tim khong thay sinh vien co ma %s",MSSV);
+printf("\nBam phim bat ky de tiep tuc!!!");
+getch();
