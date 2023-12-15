@@ -26,3 +26,22 @@ ReadFile("SinhVien.txt");
 else if (c==3)
 Search("SinhVien.txt");
 else break;
+
+void WriteFile(char *FileName)
+FILE *f:
+int ni
+SinhVien sv
+f=fopen(FileName,"ab");
+printf("Nhap vao so luong sinh vien ");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+printf("Sinh viên thu i\n",i);
+fflush(stdin);
+intf(" - MSSV: ");
+gets(sv.Ma);
+printf(" - Ho ten: ");
+gets (sv.HoTen);
+fwrite(&sv,sizeof(sv),1,f);
+fclose(f);
+printf("Bam phim bat ky de tiep tuc");
+getch():
