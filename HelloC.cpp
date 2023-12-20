@@ -109,3 +109,23 @@ int i;
 printf("10 so dau tien cua day so Fibonacci: \n");
 for (i = 0; i < 10; i++) {
 printf("%d" fibonacci(i));
+
+
+
+
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+long tinhGiaithua(int n) {
+if (n > 0),(
+return-n * tinhGiaithua(n - 1);
+} else {
+return 1;
+int main()
+int n;
+printf("\n Nhap so nguyen duong n: );
+scanf("%d",&n);
+printf "Giai thua cua d la: %d\n"
+100021
+n, tinhGiaithua(n));
